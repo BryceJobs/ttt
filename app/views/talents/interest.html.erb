@@ -1,0 +1,24 @@
+
+<div class="col-sm-6 well col-sm-offset-3">
+	<h3 class="text-center">Select your area of interest</h3>
+</div>
+
+<div class="col-sm-6 well col-sm-offset-3">
+
+	<%= simple_form_for @talent, html: {class: 'form-horizontal'} do |f| %>
+		<fieldset>
+
+			<legend>Basic Informations</legend>
+		 	<div class="col-sm-12"><%= f.input :fullname %></div>
+			<div class="col-sm-6"><%= f.input :dob, label: "Date of Birth" %></div>
+			<div class="col-sm-6">
+				<%= f.input :gender, collection: Talent.options_for_gender, include_blank: false %>
+			</div>
+			<div class="col-sm-12"><%= f.input :email %></div>
+
+			<%= f.input  %>
+
+		</fieldset><br>
+
+	<% end -%>
+</div>

@@ -1,0 +1,53 @@
+<div class="col-sm-6 well col-sm-offset-3">
+	<%= simple_form_for @talent, html: {class: 'form-horizontal'} do |f| %>
+		<fieldset>
+
+			<legend>Basic Informations</legend>
+		 	<div class="col-sm-12"><%= f.input :fullname %></div>
+			<div class="col-sm-6"><%= f.input :dob, label: "Date of Birth" %></div>
+			<div class="col-sm-6">
+				<%= f.input :gender, collection: Talent.options_for_gender, include_blank: false %>
+			</div>
+			<div class="col-sm-12"><%= f.input :email %></div>
+
+		</fieldset><br>
+
+		<fieldset>
+
+			<legend>Contact Informations</legend>
+			<div class="col-sm-12"><%= f.input :phone, placeholder: "We'll use this to get in touch " %></div>
+			<div class="col-sm-12"><%= f.input :city, placeholder: "Where do you live" %></div>
+			<div class="col-sm-12"><%= f.input :country, priority: ["Cameroon", "Nigeria", "Ghana", "South Africa", "Kenya"] %></div>
+
+		</fieldset><br>
+
+		<fieldset>
+			
+			<legend>Languages</legend>
+			<div class="col-sm-12">
+				<%= f.input :french, collection: Talent.options_for_languages, prompt: "What's your overall level in french (reading, speaking, listening)" %>
+			</div>
+			<div class="col-sm-12">
+				<%= f.input :english, collection: Talent.options_for_languages, prompt: "What's your overall level in english (reading, speaking, listening)" %>
+			</div>
+			<div class="col-sm-12"><%= f.input :other_language, label: "other languages", placeholder: "spanish, chinese,..." %></div>
+
+		</fieldset><br>
+
+		<fieldset>
+			
+			<legend>Area of Expertise</legend>
+			<div class="col-sm-12"><%= f.association :career_path, prompt: 'Select your career path' %></div>
+			<div class="col-sm-12">
+				<%= f.input :overall_years_of_experience, collection: 1..15, prompt: 'Total years of experience' %>
+			</div>
+			<div class="col-sm-12">
+				<%= f.input :type_of_employment, collection: Talent.emp_type, prompt: 'What type of employment are you looking for?' %>
+			</div>
+
+		</fieldset><br>
+
+		<%= f.button :submit %> 
+
+	<% end %>
+</div><br>
